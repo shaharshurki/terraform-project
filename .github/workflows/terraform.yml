@@ -29,10 +29,10 @@ jobs:
     - name: Terraform Validate
       run: terraform validate -no-color
       
-    - name: Terraform Plan -var-file main.tfvars
+    - name: Terraform Plan 
       id: plan
-      run: terraform plan -no-color -input=false
+      run: terraform plan -no-color -input=false -var-file main.tfvars
 
-    - name: Terraform Apply -var-file main.tfvars
-      run: terraform apply -input=false -no-color -auto-approve
+    - name: Terraform Apply 
+      run: terraform apply -input=false -no-color -auto-approve -var-file main.tfvars
       
