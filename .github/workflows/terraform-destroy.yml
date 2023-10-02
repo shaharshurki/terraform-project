@@ -1,0 +1,23 @@
+name: Terraform Destroy
+
+on:
+  workflow_dispatch: # Manually trigger the workflow
+  # You can add other events like "push" to a specific branch if needed
+
+jobs:
+  destroy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Terraform
+      uses: hashicorp/setup-terraform@v2
+
+    - name: Terraform Destroy
+      run: |
+        terraform init
+        terraform destroy -auto-approve
+      env:
+        TF_ACTION_WORKING_DIR: ./ 
