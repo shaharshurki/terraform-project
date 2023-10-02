@@ -18,6 +18,6 @@ jobs:
     - name: Terraform Destroy
       run: |
         terraform init
-        terraform destroy -auto-approve
+        terraform destroy -auto-approve -var-file main.tfvars
       env:
-        TF_ACTION_WORKING_DIR: ./ 
+        TF_ACTION_WORKING_DIR: /.
