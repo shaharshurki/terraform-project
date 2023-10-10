@@ -28,7 +28,7 @@ resource "aws_subnet" "public_subnet" {
   count                   = 2
   vpc_id                  = aws_vpc.my_vpc.id
   cidr_block              = "10.0.${count.index}.0/24"
-  availability_zone       = "us-east-1a" 
+  availability_zone       = "${var.availability_zones[count.index]}"
   map_public_ip_on_launch = true
   tags = {
     Name = "public-subnet-${count.index}"
@@ -39,7 +39,7 @@ resource "aws_subnet" "private_subnet" {
   count     = 2
   vpc_id    = aws_vpc.my_vpc.id
   cidr_block = "10.0.${count.index + 2}.0/24"
-  availability_zone = "us-east-1b"
+  availability_zone = "${var.availability_zones[count.index]}"
   tags = {
     Name = "private-subnet-${count.index}"
   }
